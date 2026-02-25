@@ -447,7 +447,7 @@ def main():
     )
     
     # Save report to file
-    output_file = f"/Users/Curtis/Documents/AI-agents/sunset-scout/report_{datetime.now().strftime('%Y%m%d_%H%M')}.txt"
+    output_file = f"report_{datetime.now().strftime('%Y%m%d_%H%M')}.txt"
     with open(output_file, 'w') as f:
         f.write(report)
     print(f"\nReport saved to: {output_file}")
