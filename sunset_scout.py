@@ -16,7 +16,7 @@ from email.mime.multipart import MIMEMultipart
 # Configuration
 TAIPEI_LAT = 25.0330
 TAIPEI_LON = 121.5654
-OPENWEATHER_API_KEY = 'd36907b4ded84184fb553c793f400e74'
+OPENWEATHER_API_KEY = os.environ.get('OPENWEATHER_API_KEY', 'd36907b4ded84184fb553c793f400e74')
 
 # Transit configuration
 HOME_LOCATION = {
@@ -56,9 +56,9 @@ SUNSET_SPOTS = {
 
 def send_email_report(report_text, score):
     """Send email with sunset report"""
-    sender_email = "cstarkey5@gmail.com"  # Replace with your Gmail
-    sender_password = "hxck gker derp vnqw"  # Replace with Gmail app password
-    receiver_email = "cstarkey5@gmail.com"  # Replace with where you want to receive
+    sender_email = os.environ.get('GMAIL_ADDRESS')
+    sender_password = os.environ.get('GMAIL_APP_PASSWORD')
+    receiver_email = os.environ.get('GMAIL_ADDRESS')
     
     subject = f"🌅 Sunset Scout: {score}/100"
     
