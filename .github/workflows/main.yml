@@ -1,0 +1,32 @@
+name: Daily Sunset Scout
+
+on:
+  schedule:
+    # Runs at 08:00 UTC daily (4 PM Taiwan time, UTC+8)
+    - cron: '0 8 * * *'
+  workflow_dispatch:  # Allows manual trigger for testing
+
+jobs:
+  run-sunset-scout:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: Install dependencies
+      run: |
+        pip install requests
+        
+    - name: Run Sunset Scout
+      env:
+        OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+        GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+        GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+      run: |
+        python sunset_scout.py
