@@ -2,8 +2,8 @@ name: Daily Sunset Scout
 
 on:
   schedule:
-    # Runs at 08:00 UTC daily (4 PM Taiwan time, UTC+8)
-    - cron: '0 8 * * *'
+    # Runs at 06:30 UTC daily (2:30 PM Taiwan time, UTC+8)
+    - cron: '30 6 * * *'
   workflow_dispatch:  # Allows manual trigger for testing
 
 jobs:
